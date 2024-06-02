@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-    <title>FastAPI and WebGL Fun</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <title>{{ title }}</title>
 </head>
+
 <body>
-    <h1>Welcome!</h1>
-    <button hx-post="/games" hx-target="#games-list" hx-swap="innerHTML">
-        Show some games!
-    </button>
-    <div id="games-list">
+    <div class="flex flex-col my-4 mx-8">
+        <!--Header-->
+        <header class="sticky top-0 mb-4">
+            <div class="flex flex-row">
+                <div class="flex-1 flex flex-row justify-start items-center gap-6">
+                    <div><a href="/">{{ title }}</a></div>
+                    <div class="cursor-pointer" hx-get="/" hx-target="#body" hx-swap="innerHTML">Menu</div>
+                    <div class="cursor-pointer" hx-get="/" hx-target="#body" hx-swap="innerHTML">About
+                    </div>
+                </div>
+                <div class="flex-none flex flex-row justify-end items-center gap-6">
+                    <div><a href="https://github.com/ayoshi007/fastapi-webgl-fun">GitHub</a></div>
+                </div>
+            </div>
+        </header>
+        <!--Body-->
+        <main id="body" class="border-cyan-700 border-2">
+
+            <div class="flex-1">
+                <button hx-post="/games" hx-target="#games-list" hx-swap="innerHTML">
+                    Show some games!
+                </button>
+                <div id="games-list">
+                </div>
+            </div>
+        </main>
     </div>
 </body>
+
 </html>
