@@ -16,3 +16,7 @@ templates = Jinja2Templates(directory=TEMPLATE_DIR)
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse(request, name="index.html")
+
+@app.post("/games", response_class=HTMLResponse)
+async def games(request: Request):
+    return templates.TemplateResponse(request, name="games.html")

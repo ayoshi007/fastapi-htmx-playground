@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
     <title>FastAPI and WebGL Fun</title>
 </head>
 <body>
     <h1>Welcome!</h1>
+    <button hx-post="/games" hx-target="#games-list" hx-swap="innerHTML">
+        Show some games!
+    </button>
+    <div id="games-list">
+    </div>
 </body>
 </html>
