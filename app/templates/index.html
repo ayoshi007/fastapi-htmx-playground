@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='/images/favicon.ico') }}">
     <title>{{ title }}</title>
 </head>
 
 <body>
-    <div class="flex flex-col my-4 mx-8">
+    <div class="flex flex-col my-4 mx-8 font-mono">
         <!--Header-->
-        <header class="sticky top-0 mb-4">
+        <header class="sticky top-0 px-4">
             <div class="flex flex-row">
-                <div class="flex-1 flex flex-row justify-start items-center gap-6">
-                    <div><a href="/">{{ title }}</a></div>
-                    <div class="cursor-pointer" hx-get="/" hx-target="#body" hx-swap="innerHTML">Menu</div>
-                    <div class="cursor-pointer" hx-get="/" hx-target="#body" hx-swap="innerHTML">About
+                <div class="flex-1 flex flex-row justify-start items-center gap-12">
+                    <div class="cursor-pointer" hx-get="/home" hx-target="#body" hx-swap="innerHTML">{{ title }}</div>
+                    <div class="flex flex-col">
+                        <div class="cursor-pointer" hx-get="/" hx-target="#menu-items" hx-swap="innerHTML">Menu</div>
+                        <div id="menu-items"></div>
+                    </div>
+                    <div class="cursor-pointer" hx-get="/about" hx-target="#body" hx-swap="innerHTML">About
                     </div>
                 </div>
                 <div class="flex-none flex flex-row justify-end items-center gap-6">
@@ -26,15 +29,10 @@
                 </div>
             </div>
         </header>
+        <hr class="my-4">
         <!--Body-->
-        <main id="body" class="border-cyan-700 border-2">
-
-            <div class="flex-1">
-                <button hx-post="/games" hx-target="#games-list" hx-swap="innerHTML">
-                    Show some games!
-                </button>
-                <div id="games-list">
-                </div>
+        <main class="">
+            <div class="flex-1" id="body" hx-get="/home" hx-trigger="load" hw-swap="innerHTML">
             </div>
         </main>
     </div>
