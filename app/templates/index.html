@@ -16,12 +16,11 @@
         <header class="sticky top-0 px-4">
             <div class="flex flex-row">
                 <div class="flex-1 flex flex-row justify-start items-center gap-12">
-                    <div class="cursor-pointer" hx-get="/home" hx-target="#body" hx-swap="innerHTML">{{ title }}</div>
-                    <div class="flex flex-col">
-                        <div class="cursor-pointer" hx-get="/" hx-target="#menu-items" hx-swap="innerHTML">Menu</div>
-                        <div id="menu-items"></div>
-                    </div>
-                    <div class="cursor-pointer" hx-get="/about" hx-target="#body" hx-swap="innerHTML">About
+                    <div class="cursor-pointer" hx-get="/home" hx-push-url="true" hx-target="#body" hx-swap="innerHTML">
+                        {{ title
+                        }}</div>
+                    <div class="cursor-pointer" hx-get="/about" hx-push-url="true" hx-target="#body"
+                        hx-swap="innerHTML">About
                     </div>
                 </div>
                 <div class="flex-none flex flex-row justify-end items-center gap-6">
@@ -29,10 +28,10 @@
                 </div>
             </div>
         </header>
-        <hr class="my-4">
+        <hr class="mx-0 mt-4 mb-8">
         <!--Body-->
-        <main class="">
-            <div class="flex-1" id="body" hx-get="/home" hx-trigger="load" hw-swap="innerHTML">
+        <main class="flex-1">
+            <div id="body" hx-get="/home" hx-trigger="load" hw-swap="innerHTML">
             </div>
         </main>
     </div>

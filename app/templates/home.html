@@ -1,4 +1,9 @@
-<button hx-post="/games" hx-target="#games-list" hx-swap="innerHTML">
-    Show some games!
-</button>
-<div id="games-list"></div>
+<div id="games-catalogue" class="grid grid-cols-4 gap-8">
+    {% for game in games.values() %}
+    <div class="p-6 shadow-current shadow-md hover:shadow-lg hover:shadow-current" hx-get="/game/{{game.name}}"
+        hx-push-url="true" hx-target="#body" hx-swap="innerHTML">
+        <div>{{ game.name }}</div>
+        <div>{{ game.description }}</div>
+    </div>
+    {% endfor %}
+</div>
