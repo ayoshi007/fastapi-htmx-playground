@@ -1,4 +1,4 @@
-# fastapi-webgl-fun
+# fastapi-htmx-playground
 A repo for messing around with [FastAPI](https://fastapi.tiangolo.com/), [HTMX](https://htmx.org/), and other things like [WebGL](https://www.khronos.org/webgl/).
 
 Powered by
